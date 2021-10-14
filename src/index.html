@@ -1,29 +1,14 @@
-<!DOCTYPE html>
 <html>
-   <head>
-       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-       <title> Python-CGIHTTPServer</title>
-       <meta name="author" content="bill0">
-        <script type="text/javascript">
-   function post(input) { 
-   	var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
-   	var url="post.py?input="+input
-       httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
-        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
-        /**
-         * 获取数据后的处理程序
-         */
-        httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                var json = httpRequest.responseText;//获取到json字符串，还需解析
-                console.log(json);
-            }
-        };
-   </script>
-   </head>
-   <body>
-   	<div style="" onclick="post('f')" >
-   		<h1 style="
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title> Python-CGIHTTPServer</title>
+    <meta name="author" content="bill0" />
+
+</head>
+
+<body>
+    <div style="
 		    text-align: center;
 		    background-color: gray;
 		    color: white;
@@ -31,8 +16,65 @@
 		    height: 20%;
 		    margin-top: 1%;
 		    margin-left: 30%;
-		">前</h1>
-	</div>
-   </body>
-  
+		" onclick="post('f')">
+        <h1>前</h1>
+    </div>
+    <div style="
+		    text-align: center;
+		    background-color: gray;
+		    color: white;
+		    width: 40%;
+		    height: 20%;
+		    margin-top: 1%;
+		    float: left;
+		" onclick="post('f')">
+        <h1>左</h1>
+    </div>
+    <div style="
+		    text-align: center;
+		    background-color: gray;
+		    color: white;
+		    width: 40%;
+		    height: 20%;
+		    margin-top: 1%;
+		    float: right;
+		" onclick="post('f')">
+        <h1>右</h1>
+    </div>
+    <div style="
+		    text-align: center;
+		    background-color: gray;
+		    color: white;
+		    width: 40%;
+		    height: 20%;
+		    margin-top: 1%;
+		    margin-left: 30%;
+		    float: left;
+		" onclick="post('f')">
+        <h1>后</h1>
+    </div>
+    <script type="text/javascript">
+        function post(input) {
+            var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+            var url = "/cgi-bin/post.py?input=" + input
+            httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
+            httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+            /**
+             * 获取数据后的处理程序
+             */
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                    var json = httpRequest.responseText;//获取到json字符串，还需解析
+                    console.log(json);
+                }
+            };
+        }
+    </script>
+
+
+
+
+</body>
+
+
 </html>

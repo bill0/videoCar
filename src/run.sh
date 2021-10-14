@@ -1,1 +1,1 @@
-nohup python -m CGIHTTPServer 8088 &
+nohup python -m http.server --cgi 8088 &
