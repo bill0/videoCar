@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
    <head>
-       <meta http-equiv="Content-Type" content="text/html; charset=gbk">
-       <title> Python-CGIHTTPServer使用示例 </title>
-       <meta name="author" content="Haiyu">
-       <center><h1> Python-CGIHTTPServer使用示例 </h1></center>
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+       <title> Python-CGIHTTPServer</title>
+       <meta name="author" content="bill0">
+        <script type="text/javascript">
+   function post(input) { 
+   	var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+   	var url="post.py?input="+input
+       httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
+        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var json = httpRequest.responseText;//获取到json字符串，还需解析
+                console.log(json);
+            }
+        };
+   </script>
    </head>
-   <hr style="height:5px;border:none;border-top:5px ridge green;" />
    <body>
-       <br/>
-       <center><h2>计算圆的周长</h2></center>
-       <center>
-       <p>请输入圆的半径长度.</p>
-       <br/>
-       <form action="cgi-bin/c_length.sh" method="post" enctype="text/plain" target="_blank">
-           radius:<input type="text" id="radius" name="radius" value=""/>
-           <input type="submit" id="c_length" name="c_length" value="计算周长">
-       </form>
-       </center>
-       <br/>
-       <br/>
-       <br/>
+   	<div style="" onclick="post('f')" >
+   		<h1 style="
+		    text-align: center;
+		    background-color: gray;
+		    color: white;
+		    width: 40%;
+		    height: 20%;
+		    margin-top: 1%;
+		    margin-left: 30%;
+		">前</h1>
+	</div>
    </body>
-   <hr style="height:5px;border:none;border-top:5px ridge green;" />
-   <br/>
-   <br/>
+  
 </html>
